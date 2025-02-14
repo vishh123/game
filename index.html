@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia battle game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="player-information">
+        <h2>Two-Player Trivia battle game</h2>
+        <input id="player-input-1" type="text" placeholder="Enter name ">
+        <input id="player-input-2" type="text" placeholder="Enter name ">
+        <button id="start-btn" type="submit">Start</button>
+    </div>
+
+    <div id="category" style="display: none;">
+        <h2>Select your category below</h2>
+        <label for="">Choose your category</label>
+
+        <select id="category-options">
+            <option disabled selected> select one Catogery</option>
+            <option value="music">Music</option>
+            <option value="sport_and_leisure">Sports and Leisure</option>
+            <option value="film_and_tv">Film and TV</option>
+            <option value="arts_and_literature">Arts and Literature</option>
+            <option value="history">History</option>
+            <option value="society_and_culture">Society and Culture</option>
+            <option value="science">Science</option>
+            <option value="geography">Geography</option>
+            <option value="food_and_drink">Food and Drink</option>
+            <option value="general_knowledge">General Knowledge</option>
+        </select>
+        <button id="submit-btn" type="submit">Submit</button>
+
+
+
+    </div>
+
+    <div id="question" style="display: none;">
+        <div id="bothPlayerName">
+            <h3 id="player-1-name"></h3>
+            <h3 id="player-2-name"></h3>
+        </div>
+        <h4 id="question-Text"></h4>
+        <h2>please select the correct option...!</h2>
+
+        <div id="options">
+
+        </div>
+
+
+    </div>
+
+    <div id="result-section" style="display: none;">
+        <h2 id="result-text"></h2>
+        <button id="play-again">Play Again</button>
+        <button id="Exit">Exit</button>
+        <h2 id="Exit-Game"></h2>
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
