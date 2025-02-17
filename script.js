@@ -3,6 +3,7 @@ const startbtn = document.getElementById("start-btn");
 const category_part = document.getElementById("category");
 let player1NameInput = document.getElementById("player-input-1");
 let player2NameInput = document.getElementById("player-input-2");
+let tagname;
 
 let player1Name = "";
 let player2Name = "";
@@ -16,17 +17,17 @@ startbtn.addEventListener("click", () => {
     player2Name = player2NameInput.value;
     console.log(player2Name);
 
-    category()
+    category();
 });
 
 function category() {
     if (player1Name === "" || player2Name === "") {
-      alert("please enter your name..!!");
+        alert("please enter your name..!!");
     } else {
-      player_info.style.display = "none";
-      category_part.style.display = "block";
+        player_info.style.display = "none";
+        category_part.style.display = "block";
     }
-  }
+}
 
 const categoryOptions = document.getElementById("category-options");
 const submitbtn = document.getElementById("submit-btn");
@@ -37,27 +38,26 @@ const playername2 = document.getElementById("player-2-name");
 
 let questionText = document.getElementById("question-Text");
 
-
 submitbtn.addEventListener("click", question);
 
 async function question() {
-
     let finalQuestion = [];
+
     let selectedOption = categoryOptions.value;
     console.log(selectedOption);
-  
-    categoryOptions.querySelectorAll("option").forEach(option => {
+    categoryOptions.querySelectorAll("option").forEach((option) => {
         if (option.value === selectedOption) {
-            option.disabled = true;
+            tagname = document.querySelector(`option[value="${selectedOption}"]`);
+            console.log(tagname);
         }
     });
-
 
     difficulties = ["easy", "medium", "hard"];
 
     for (let i = 0; i < difficulties.length; i++) {
         const response = await fetch(
-            `https://the-trivia-api.com/v2/questions?categories=${selectedOption}&limit=${2}&difficulties=${difficulties[i]}`
+            `https://the-trivia-api.com/v2/questions?categories=${selectedOption}&limit=${2}&difficulties=${difficulties[i]
+            }`
         );
         const question = await response.json();
         console.log(question);
@@ -103,12 +103,14 @@ function renderQuestionAnsValidation(finalQuestion) {
         const options = document.getElementById("options");
         options.innerHTML = "";
 
-        const allAnswers = [...currentQuestion.incorrectAnswers,currentQuestion.correctAnswer];
+        const allAnswers = [
+            ...currentQuestion.incorrectAnswers,
+            currentQuestion.correctAnswer,
+        ];
         console.log(allAnswers);
-        
+
         const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
         console.log(shuffledAnswers);
-        
 
         for (let i = 0; i < shuffledAnswers.length; i++) {
             const answer = shuffledAnswers[i];
@@ -182,6 +184,7 @@ function renderQuestionAnsValidation(finalQuestion) {
         finalQuestion = [];
         resultSection.style.display = "none";
         category_part.style.display = "block";
+        tagname.remove();
     });
 
     const exitButton = document.getElementById("Exit");
